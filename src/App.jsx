@@ -6,6 +6,25 @@ const metrics = [
   { value: '3x', label: 'mas conversion con estructura optimizada' },
 ]
 
+const differentiators = [
+  {
+    title: 'Diseño a medida',
+    description: 'Nada de plantillas genéricas. Cada propuesta se adapta a tu marca y a tu tipo de cliente.',
+  },
+  {
+    title: 'Rápido y optimizado',
+    description: 'Priorizamos velocidad, estructura limpia y una base técnica útil para SEO y campañas.',
+  },
+  {
+    title: 'Entrega por sprints',
+    description: 'Avanzas con revisiones reales y fechas claras, no con proyectos eternos.',
+  },
+  {
+    title: 'Enfoque comercial',
+    description: 'Cada bloque del sitio busca explicar mejor tu oferta y convertir visitas en contactos.',
+  },
+]
+
 const services = [
   {
     title: 'Landing pages que venden',
@@ -59,6 +78,77 @@ const process = [
   'Desarrollo, optimizacion y publicacion final',
 ]
 
+const includes = [
+  'Diseño responsive para móvil, tablet y escritorio',
+  'SEO técnico base y velocidad optimizada',
+  'Formulario de contacto y botón de WhatsApp',
+  'Asesoría de hosting y dominio',
+  'Soporte posterior al lanzamiento',
+  'Copy comercial orientado a conversión',
+]
+
+const pricing = [
+  {
+    name: 'Landing Express',
+    oldPrice: '$11,900',
+    price: '$6,900 MXN',
+    tagline: 'Una página de alta conversión para lanzar rápido tu oferta.',
+    features: [
+      '1 página principal',
+      'Diseño a medida',
+      'SEO técnico optimizado',
+      'Formulario + WhatsApp',
+      'Lista en 5 a 7 días hábiles',
+    ],
+  },
+  {
+    name: 'Sitio Profesional',
+    oldPrice: '$25,000',
+    price: '$14,900 MXN',
+    tagline: 'La opción más sólida para PyMEs que necesitan una web completa.',
+    features: [
+      'Hasta 8 secciones',
+      'Diseño 100% personalizado',
+      'SEO técnico + velocidad',
+      'Blog opcional',
+      'Capacitación + soporte inicial',
+    ],
+    featured: true,
+  },
+  {
+    name: 'Web + Automatización',
+    oldPrice: '$45,000',
+    price: '$29,900 MXN',
+    tagline: 'Para negocios que quieren capturar leads y automatizar mejor su atención.',
+    features: [
+      'Todo lo del sitio profesional',
+      'Flujos de captura y calificación',
+      'Integración con WhatsApp',
+      'Soporte prioritario',
+      'Escalable a IA y CRM',
+    ],
+  },
+]
+
+const faqs = [
+  {
+    question: '¿Cuánto tarda un sitio web?',
+    answer: 'Una landing puede estar lista en una semana. Un sitio más completo suele tomar entre 2 y 4 semanas según contenido y revisiones.',
+  },
+  {
+    question: '¿Queda optimizado para Google?',
+    answer: 'Sí. Dejamos una base técnica limpia, estructura correcta, velocidad optimizada y contenido mejor preparado para SEO.',
+  },
+  {
+    question: '¿Incluye WhatsApp y formularios?',
+    answer: 'Sí. Podemos integrar formularios, botón directo de WhatsApp y rutas de contacto pensadas para convertir mejor.',
+  },
+  {
+    question: '¿Los precios son cerrados?',
+    answer: 'Trabajamos con rangos claros y cerramos el alcance después de un diagnóstico breve para evitar sorpresas durante el proyecto.',
+  },
+]
+
 function App() {
   return (
     <div className="page-shell">
@@ -81,42 +171,42 @@ function App() {
       <main>
         <section className="hero-section">
           <div className="hero-copy">
-            <p className="eyebrow">Creamos paginas web con enfoque comercial</p>
-            <h1>Disenamos sitios web que se ven solidos y convierten visitas en clientes.</h1>
+            <p className="eyebrow">Diseño web que convierte visitantes en clientes</p>
+            <h1>Páginas web rápidas, a medida y pensadas para vender mejor.</h1>
             <p className="hero-text">
-              Construimos landing pages, webs corporativas y experiencias digitales
-              pensadas para mostrar autoridad, captar prospectos y acelerar tu cierre
-              comercial.
+              Creamos landing pages y sitios corporativos con diseño profesional,
+              velocidad optimizada, estructura comercial y una experiencia clara para
+              que tu negocio proyecte confianza desde el primer vistazo.
             </p>
             <div className="hero-actions">
               <a className="primary-link" href="#contacto">
-                Solicitar propuesta
+                Cotizar mi sitio
               </a>
               <a className="secondary-link" href="#crecimiento">
-                Ver soluciones
+                Ver qué incluye
               </a>
             </div>
             <div className="hero-proofbar" aria-label="Elementos de confianza">
               <span>SEO base incluido</span>
-              <span>Asesoria gratis</span>
-              <span>Experiencia responsive</span>
+              <span>WhatsApp integrado</span>
+              <span>Diagnóstico gratis</span>
             </div>
           </div>
 
           <aside className="hero-card" aria-label="Resumen del servicio">
-            <p className="card-label">Proyecto destacado</p>
-            <h2>Landing page premium para captar leads</h2>
+            <p className="card-label">Lanzamiento 2026</p>
+            <h2>Diseño web a medida para negocios que quieren resultados rápidos</h2>
             <p>
-              Arquitectura visual inspirada en agencias modernas: encabezado limpio,
-              secciones amplias, contraste fuerte y narrativa orientada a resultados.
+              Diagnóstico gratuito, propuesta clara en menos de 24 horas y una base lista
+              para SEO, campañas y atención por WhatsApp.
             </p>
             <ul className="feature-list">
-              <li>Diseno adaptable para movil, tablet y escritorio</li>
-              <li>Texto comercial y bloques optimizados para conversion</li>
-              <li>Entrega lista para publicar en hosting</li>
+              <li>Diseño adaptable para móvil, tablet y escritorio</li>
+              <li>Arquitectura comercial orientada a conversión</li>
+              <li>Entrega lista para publicar y escalar</li>
             </ul>
             <a className="inline-cta" href="#contacto">
-              Recibir asesoria gratis
+              Agendar diagnóstico gratis
             </a>
           </aside>
         </section>
@@ -128,6 +218,21 @@ function App() {
               <span>{item.label}</span>
             </article>
           ))}
+        </section>
+
+        <section className="content-section differentiators-section">
+          <div className="section-heading">
+            <p className="eyebrow">Diferenciales</p>
+            <h2>Una página web útil no solo se ve bien: también carga rápido y ayuda a vender.</h2>
+          </div>
+          <div className="differentiators-grid">
+            {differentiators.map((item) => (
+              <article className="differentiator-card" key={item.title}>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))}
+          </div>
         </section>
 
         <section className="content-section" id="servicios">
@@ -147,16 +252,26 @@ function App() {
 
         <section className="content-section trust-section" id="crecimiento">
           <div className="section-heading">
-            <p className="eyebrow">Crecimiento</p>
-            <h2>Nuestros servicios tienen como objetivo que tu marca gane visibilidad y contactos.</h2>
+            <p className="eyebrow">Qué incluye</p>
+            <h2>Todo lo necesario para lanzar una web moderna con base técnica y enfoque comercial.</h2>
           </div>
-          <div className="growth-grid">
-            {growthServices.map((item) => (
-              <article className="growth-card" key={item.title}>
-                <p className="mini-label">{item.title}</p>
-                <p>{item.description}</p>
-              </article>
-            ))}
+          <div className="includes-layout">
+            <div className="includes-grid">
+              {includes.map((item) => (
+                <article className="include-item" key={item}>
+                  <span>+</span>
+                  <p>{item}</p>
+                </article>
+              ))}
+            </div>
+            <div className="growth-grid">
+              {growthServices.map((item) => (
+                <article className="growth-card" key={item.title}>
+                  <p className="mini-label">{item.title}</p>
+                  <p>{item.description}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -178,7 +293,7 @@ function App() {
         <section className="content-section certification-section">
           <div className="section-heading narrow">
             <p className="eyebrow">Confianza</p>
-            <h2>Vendemos una solucion integral: buena imagen, estructura clara y base para SEO.</h2>
+            <h2>Vendemos una solución integral: diseño a medida, velocidad y base sólida para captar leads.</h2>
           </div>
           <div className="certification-panel">
             <div className="badge-row" aria-label="Sellos de confianza">
@@ -187,9 +302,9 @@ function App() {
               <span>UX first</span>
             </div>
             <div className="trust-list">
-              {trustPoints.map((point) => (
+              {trustPoints.map((point, index) => (
                 <article className="trust-item" key={point}>
-                  <strong>01</strong>
+                  <strong>{String(index + 1).padStart(2, '0')}</strong>
                   <p>{point}</p>
                 </article>
               ))}
@@ -197,29 +312,63 @@ function App() {
           </div>
         </section>
 
-        <section className="content-section portfolio-callout" id="portafolio">
-          <div className="section-heading narrow">
-            <p className="eyebrow">Enfoque visual</p>
-            <h2>Estilo profesional, sobrio y actual para marcas de servicio</h2>
+        <section className="content-section pricing-section" id="portafolio">
+          <div className="section-heading">
+            <p className="eyebrow">Precios claros</p>
+            <h2>Paquetes simples, sin letras chiquitas y listos para cotizar según tu negocio.</h2>
           </div>
-          <p className="portfolio-text">
-            Esta base ya queda preparada para seguir sumando testimonios, casos de
-            exito, galeria de proyectos y formularios conectados a WhatsApp o correo.
-          </p>
+          <div className="pricing-grid">
+            {pricing.map((plan) => (
+              <article className={plan.featured ? 'pricing-card featured-plan' : 'pricing-card'} key={plan.name}>
+                <p className="mini-label">{plan.name}</p>
+                <p className="old-price">{plan.oldPrice}</p>
+                <h3>{plan.price}</h3>
+                <p className="pricing-tagline">{plan.tagline}</p>
+                <ul className="plan-list">
+                  {plan.features.map((feature) => (
+                    <li key={feature}>{feature}</li>
+                  ))}
+                </ul>
+                <a className="pricing-link" href="#contacto">
+                  Cotizar este plan
+                </a>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="content-section faq-section">
+          <div className="section-heading narrow">
+            <p className="eyebrow">Preguntas frecuentes</p>
+            <h2>Resolviendo las dudas típicas antes de arrancar un proyecto web.</h2>
+          </div>
+          <div className="faq-list">
+            {faqs.map((item) => (
+              <details className="faq-item" key={item.question}>
+                <summary>{item.question}</summary>
+                <p>{item.answer}</p>
+              </details>
+            ))}
+          </div>
         </section>
 
         <section className="contact-banner" id="contacto">
           <div>
             <p className="eyebrow">Contacto</p>
-            <h2>Si quieres vender tus servicios con una mejor pagina, esta es una base util.</h2>
+            <h2>Hablemos de tu proyecto y te damos un estimado claro sin compromiso.</h2>
             <p className="contact-copy">
-              Tambien podemos sumar WhatsApp, formularios, blog, SEO local y una ruta clara
-              para campanas publicitarias.
+              También podemos sumar WhatsApp, formularios, blog, SEO local y una ruta clara
+              para campañas publicitarias según el tipo de negocio que manejes.
             </p>
           </div>
-          <a className="primary-link" href="mailto:contacto@portalenlinea.com">
-            contacto@portalenlinea.com
-          </a>
+          <div className="contact-actions">
+            <a className="primary-link" href="mailto:contacto@portalenlinea.com">
+              contacto@portalenlinea.com
+            </a>
+            <a className="secondary-link whatsapp-link" href="https://wa.me/5213312345678">
+              WhatsApp directo
+            </a>
+          </div>
         </section>
       </main>
     </div>
