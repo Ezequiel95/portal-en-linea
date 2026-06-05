@@ -85,7 +85,7 @@ export const VisitorChart = () => (
         { day: 'Sáb', height: '30%' },
         { day: 'Dom', height: '20%' },
       ].map((bar, idx) => (
-        <div key={idx} className="d-flex flex-column align-items-center" style={{ width: '11%', height: '100%' }}>
+        <div key={idx} className="d-flex flex-column align-items-center justify-content-end" style={{ width: '11%', height: '100%' }}>
           <div className="w-100 rounded-top" style={{ 
             height: bar.height, 
             background: bar.active ? 'linear-gradient(180deg, #09b08b, #00e676)' : '#cbd5e1',
