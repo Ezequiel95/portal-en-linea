@@ -8,7 +8,7 @@ import './App.css'
 
 const Logo = ({ light = true, size = 38 }) => {
   const textColor = light ? 'text-white' : 'text-dark'
-  const subColor = '#09b08b' // El color verde-azul del logo oficial
+  const subColor = light ? '#00e676' : '#09b08b' // Más claro y brillante en fondos oscuros para mejorar contraste
   
   return (
     <div className="logo-container d-flex align-items-center gap-2">
