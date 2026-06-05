@@ -15,39 +15,80 @@
 
 /* ── Keyframes ── */
 @keyframes aurora-shift {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @keyframes orb-float-1 {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.45; }
-  33%       { transform: translate(40px, -50px) scale(1.15); opacity: 0.60; }
-  66%       { transform: translate(-30px, 30px) scale(0.90); opacity: 0.35; }
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.45;
+  }
+
+  33% {
+    transform: translate(40px, -50px) scale(1.15);
+    opacity: 0.60;
+  }
+
+  66% {
+    transform: translate(-30px, 30px) scale(0.90);
+    opacity: 0.35;
+  }
 }
 
 @keyframes orb-float-2 {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.25; }
-  40%       { transform: translate(-50px, 40px) scale(1.20); opacity: 0.40; }
-  75%       { transform: translate(30px, -30px) scale(0.85); opacity: 0.20; }
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.25;
+  }
+
+  40% {
+    transform: translate(-50px, 40px) scale(1.20);
+    opacity: 0.40;
+  }
+
+  75% {
+    transform: translate(30px, -30px) scale(0.85);
+    opacity: 0.20;
+  }
 }
 
 @keyframes orb-float-3 {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.30; }
-  50%       { transform: translate(30px, 40px) scale(1.08); opacity: 0.45; }
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.30;
+  }
+
+  50% {
+    transform: translate(30px, 40px) scale(1.08);
+    opacity: 0.45;
+  }
 }
 
 /* ── Hero Wrapper (navbar + header integrados) ── */
 .hero-wrapper {
   position: relative;
-  background: linear-gradient(
-    135deg,
-    #ffffff 0%,
-    #f8fafc 25%,
-    #f1f5f9 50%,
-    #e2e8f0 75%,
-    #ffffff 100%
-  );
+  background: linear-gradient(135deg,
+      #ffffff 0%,
+      #f8fafc 25%,
+      #f1f5f9 50%,
+      #e2e8f0 75%,
+      #ffffff 100%);
   background-size: 300% 300%;
   animation: aurora-shift 12s ease infinite;
   overflow: hidden;
@@ -103,14 +144,14 @@
   position: relative;
 }
 
-.hero-wrapper > * {
+.hero-wrapper>* {
   position: relative;
   z-index: 1;
 }
 
 /* ── Navbar glass ── */
 .navbar-glass {
-  background: #090d16;
+  background: #5f6d95;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -190,7 +231,8 @@
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-.btn-primary:hover, .btn-primary:focus {
+.btn-primary:hover,
+.btn-primary:focus {
   background: linear-gradient(135deg, #0b5ed7 0%, #1d3557 100%) !important;
   transform: translateY(-2px) !important;
   box-shadow: 0 6px 20px rgba(13, 110, 253, 0.4) !important;
@@ -647,7 +689,7 @@
 }
 
 /* Fila inferior: ícono + label + btn */
-.svc-card > .svc-card-icon-col {
+.svc-card>.svc-card-icon-col {
   margin-bottom: 0.25rem;
 }
 
@@ -746,9 +788,17 @@
   border-radius: 50%;
 }
 
-.browser-dot.red { background: #ff5f56; }
-.browser-dot.yellow { background: #ffbd2e; }
-.browser-dot.green { background: #27c93f; }
+.browser-dot.red {
+  background: #ff5f56;
+}
+
+.browser-dot.yellow {
+  background: #ffbd2e;
+}
+
+.browser-dot.green {
+  background: #27c93f;
+}
 
 .browser-address {
   flex: 1;
@@ -826,7 +876,8 @@
   transition: color 0.2s;
 }
 
-.mock-pro-link.active, .mock-pro-link:hover {
+.mock-pro-link.active,
+.mock-pro-link:hover {
   color: #ffffff;
 }
 
@@ -912,7 +963,7 @@
   padding: 0.6rem;
   max-width: 260px;
   margin: 1rem auto 0 auto;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
 
 .phone-screen {
@@ -954,7 +1005,7 @@
   border-radius: 0.5rem;
   max-width: 92%;
   margin-top: 0.5rem;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
   animation: pulse-in 0.3s ease;
   align-self: flex-start;
   font-size: 0.68rem;
@@ -962,8 +1013,15 @@
 }
 
 @keyframes pulse-in {
-  0% { transform: scale(0.9); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .crm-table {
@@ -975,7 +1033,8 @@
   overflow: hidden;
 }
 
-.crm-table th, .crm-table td {
+.crm-table th,
+.crm-table td {
   padding: 0.5rem 0.6rem;
   text-align: left;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -992,8 +1051,13 @@
 }
 
 @keyframes highlight-row {
-  0% { background: rgba(34, 197, 94, 0.35); }
-  100% { background: transparent; }
+  0% {
+    background: rgba(34, 197, 94, 0.35);
+  }
+
+  100% {
+    background: transparent;
+  }
 }
 
 /* ── Footer Premium Portal en Línea ── */
