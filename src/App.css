@@ -42,25 +42,26 @@
   position: relative;
   background: linear-gradient(
     135deg,
-    #090d22 0%,
-    #111e3f 25%,
-    #172a5b 50%,
-    #11224d 75%,
-    #090d22 100%
+    #ffffff 0%,
+    #f8fafc 25%,
+    #f1f5f9 50%,
+    #e2e8f0 75%,
+    #ffffff 100%
   );
   background-size: 300% 300%;
   animation: aurora-shift 12s ease infinite;
   overflow: hidden;
+  border-bottom: 1px solid #e2e8f0;
 }
 
-/* Orbe 1 – azul eléctrico suave */
+/* Orbe 1 – verde-azul del logo */
 .hero-wrapper::before {
   content: '';
   position: absolute;
   width: 580px;
   height: 580px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(56, 139, 253, 0.22) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(9, 176, 139, 0.08) 0%, transparent 70%);
   top: -120px;
   right: 5%;
   pointer-events: none;
@@ -68,14 +69,14 @@
   animation: orb-float-1 10s ease-in-out infinite;
 }
 
-/* Orbe 2 – índigo suave */
+/* Orbe 2 – verde-menta brillante */
 .hero-wrapper::after {
   content: '';
   position: absolute;
   width: 440px;
   height: 440px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.16) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 230, 118, 0.06) 0%, transparent 70%);
   bottom: -90px;
   left: 8%;
   pointer-events: none;
@@ -83,14 +84,14 @@
   animation: orb-float-2 14s ease-in-out infinite;
 }
 
-/* Orbe 3 – cian suave */
+/* Orbe 3 – cian-teal */
 .hero-glass::before {
   content: '';
   position: absolute;
   width: 320px;
   height: 320px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.10) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.05) 0%, transparent 70%);
   top: 30%;
   left: 38%;
   pointer-events: none;
@@ -109,10 +110,10 @@
 
 /* ── Navbar glass ── */
 .navbar-glass {
-  background: rgba(9, 13, 26, 0.75);
+  background: #090d16;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border-glass);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -196,18 +197,19 @@
 }
 
 .btn-outline-light {
-  border: 1.5px solid rgba(255, 255, 255, 0.4) !important;
-  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1.5px solid rgba(15, 23, 42, 0.3) !important;
+  background: rgba(15, 23, 42, 0.02) !important;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   font-weight: 600 !important;
-  color: #fff !important;
+  color: #0f172a !important;
   transition: all 0.25s ease !important;
 }
 
 .btn-outline-light:hover {
-  background: rgba(255, 255, 255, 0.15) !important;
-  border-color: #ffffff !important;
+  background: rgba(15, 23, 42, 0.08) !important;
+  border-color: #0f172a !important;
+  color: #0f172a !important;
   transform: translateY(-2px) !important;
 }
 
@@ -237,15 +239,15 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: rgba(147, 197, 253, 0.9);
-  background: rgba(99, 179, 237, 0.12);
-  border: 1px solid rgba(147, 197, 253, 0.25);
+  color: #0f766e;
+  background: rgba(9, 176, 139, 0.08);
+  border: 1px solid rgba(9, 176, 139, 0.20);
   border-radius: 999px;
   padding: 0.3rem 0.9rem;
 }
 
 .hero-lead {
-  color: rgba(255, 255, 255, 0.65);
+  color: #475569;
   max-width: 42rem;
 }
 
@@ -254,9 +256,9 @@
   align-items: center;
   font-size: 0.8rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.80);
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #334155;
+  background: rgba(15, 23, 42, 0.04);
+  border: 1px solid rgba(15, 23, 42, 0.10);
   border-radius: 999px;
   padding: 0.35rem 0.9rem;
   backdrop-filter: blur(6px);
@@ -266,6 +268,7 @@
   max-width: 14ch;
   letter-spacing: -0.05em;
   line-height: 1.02;
+  color: #0f172a;
 }
 
 .hero-paragraph {

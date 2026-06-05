@@ -72,9 +72,9 @@ const Logo = ({ light = true, size = 38 }) => {
 
 
 const metrics = [
-  { value: '+120', label: 'sitios y landing pages publicadas' },
-  { value: '10 dias', label: 'tiempo promedio de entrega inicial' },
-  { value: '3x', label: 'mejor enfoque de conversion y estructura' },
+  { value: '+120', label: 'sitios y landing pages publicadas', color: '#09b08b' },
+  { value: '10 dias', label: 'tiempo promedio de entrega inicial', color: '#0d6efd' },
+  { value: '3x', label: 'mejor enfoque de conversion y estructura', color: '#f59e0b' },
 ]
 
 const carouselSlides = [
@@ -106,6 +106,8 @@ const differentiators = [
     icon: 'M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42',
     color: '#6366f1',
     bg: 'rgba(99,102,241,0.08)',
+    category: 'professional',
+    subTab: 'inicio',
   },
   {
     title: 'Velocidad y SEO base',
@@ -114,6 +116,7 @@ const differentiators = [
     icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
     color: '#f59e0b',
     bg: 'rgba(245,158,11,0.08)',
+    category: 'landing',
   },
   {
     title: 'WhatsApp y formularios',
@@ -122,6 +125,7 @@ const differentiators = [
     icon: 'M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z',
     color: '#22c55e',
     bg: 'rgba(34,197,94,0.08)',
+    category: 'automation',
   },
   {
     title: 'Entrega por etapas',
@@ -130,6 +134,8 @@ const differentiators = [
     icon: 'M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z',
     color: '#0d6efd',
     bg: 'rgba(13,110,253,0.08)',
+    category: 'professional',
+    subTab: 'servicios',
   },
 ]
 
@@ -138,21 +144,27 @@ const services = [
     label: 'Landing pages para campañas y captacion',
     example: 'Ejemplo: landing para anuncios de Meta o Google con encabezado, beneficios, testimonios y formulario.',
     icon: 'M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z',
+    category: 'landing',
   },
   {
     label: 'Sitios corporativos para PyMEs y despachos',
     example: 'Ejemplo: pagina institucional con inicio, nosotros, servicios, preguntas frecuentes y contacto.',
     icon: 'M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z',
+    category: 'professional',
+    subTab: 'inicio',
   },
   {
     label: 'Webs con blog, catalogo o secciones administrables',
     example: 'Ejemplo: sitio con articulos, fichas de producto o secciones editables para mantener contenido actualizado.',
     icon: 'M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z',
+    category: 'professional',
+    subTab: 'admin',
   },
   {
     label: 'Integracion de WhatsApp, formularios y analitica',
     example: 'Ejemplo: eventos de conversion, pixel, Google Analytics y mensajes directos desde la web.',
     icon: 'M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z',
+    category: 'automation',
   },
 ]
 
@@ -160,33 +172,43 @@ const includes = [
   {
     label: 'Diseño responsive para movil, tablet y escritorio',
     example: 'Ejemplo: una pagina que reorganiza menu, textos e imagenes automaticamente para verse bien en celular.',
+    category: 'professional',
+    subTab: 'servicios',
+    device: 'mobile',
   },
   {
     label: 'SEO tecnico base y velocidad optimizada',
     example: 'Ejemplo: titulos correctos, imagenes comprimidas y estructura lista para buscadores.',
+    category: 'landing',
   },
   {
     label: 'Formulario de contacto y boton de WhatsApp',
     example: 'Ejemplo: formulario al pie de la pagina y acceso rapido a WhatsApp en todo momento.',
+    category: 'landing',
   },
   {
     label: 'Asesoria para dominio y hosting',
     example: 'Ejemplo: te orientamos para conectar tu dominio, correo y publicar el sitio sin depender de terceros.',
+    category: 'professional',
+    subTab: 'presupuesto',
   },
   {
     label: 'Capacitacion y soporte inicial',
     example: 'Ejemplo: una sesion para explicarte cambios basicos y acompanamiento despues del lanzamiento.',
+    category: 'professional',
+    subTab: 'admin',
   },
   {
     label: 'Textos orientados a conversion',
     example: 'Ejemplo: encabezados que explican tu valor, beneficios claros y cierres con llamada a la accion.',
+    category: 'landing',
   },
 ]
 
 const pricing = [
   {
     name: 'Landing Express',
-    price: '$5,000 MXN',
+    price: '$6,900 MXN',
     description: 'Ideal para lanzar una oferta o servicio puntual.',
     features: ['1 pagina de conversion', 'CTA + formulario', 'SEO tecnico base'],
     example: 'Ejemplo: pagina para campana de anuncios con beneficios, prueba social y formulario rapido.',
@@ -247,8 +269,14 @@ function App() {
   const [autoRunning, setAutoRunning] = useState(false)
   const [simWhatsApp, setSimWhatsApp] = useState([])
 
-  const handleSelectExample = (category) => {
+  const handleSelectExample = (category, subTab = null, device = null) => {
     setActiveExample(category)
+    if (subTab) {
+      setProTab(subTab)
+    }
+    if (device) {
+      setDeviceType(device)
+    }
     const element = document.getElementById('ejemplos-en-vivo')
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
@@ -363,7 +391,7 @@ function App() {
                 <span className="hero-eyebrow">
                   Diseño web minimalista y profesional
                 </span>
-                <h1 className="display-2 fw-semibold text-white mt-3 mb-4 hero-title">
+                <h1 className="display-2 fw-semibold text-dark mt-3 mb-4 hero-title">
                   Paginas web claras, rapidas y hechas para convertir.
                 </h1>
                 <p className="lead hero-lead mb-4 hero-paragraph">
@@ -451,10 +479,10 @@ function App() {
             <div className="row g-3">
               {metrics.map((item) => (
                 <div className="col-md-4" key={item.label}>
-                  <div className="card h-100 border-0 shadow-sm metric-card-minimal">
+                  <div className="card h-100 border-0 shadow-sm metric-card-minimal" style={{ borderTop: `4px solid ${item.color}` }}>
                     <div className="card-body p-4">
-                      <div className="display-6 fw-semibold text-dark mb-2">{item.value}</div>
-                      <p className="text-secondary mb-0">{item.label}</p>
+                      <div className="display-6 fw-semibold mb-2" style={{ color: item.color }}>{item.value}</div>
+                      <p className="text-secondary mb-0 fw-semibold">{item.label}</p>
                     </div>
                   </div>
                 </div>
@@ -505,16 +533,14 @@ function App() {
                     <p className="diff-card-desc">{item.description}</p>
                     <button
                       type="button"
-                      className="diff-card-tip"
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="top"
-                      title={item.example}
+                      className="diff-card-tip animate-pulse"
+                      onClick={() => handleSelectExample(item.category, item.subTab || null, item.device || null)}
                       aria-label={`Ejemplo de ${item.title}`}
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" width="11" height="11">
                         <path fillRule="evenodd" d="M15 8A7 7 0 1 1 1 8a7 7 0 0 1 14 0ZM9 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM6.75 8a.75.75 0 0 0 0 1.5h.75v1.75a.75.75 0 0 0 1.5 0v-2.5A.75.75 0 0 0 8.25 8h-1.5Z" clipRule="evenodd" />
                       </svg>
-                      Ver ejemplo
+                      Probar en vivo
                     </button>
                   </div>
                 </div>
@@ -547,9 +573,7 @@ function App() {
                     <button
                       type="button"
                       className="svc-card-btn"
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="top"
-                      title={service.example}
+                      onClick={() => handleSelectExample(service.category, service.subTab || null, service.device || null)}
                       aria-label={`Ejemplo de ${service.label}`}
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
@@ -576,25 +600,27 @@ function App() {
               </div>
               <div className="col-lg-7">
                 <div className="row g-3">
-                  {includes.map((item) => (
-                    <div className="col-md-6" key={item.label}>
-                      <div className="card border-0 shadow-sm minimal-card h-100">
-                        <div className="card-body p-4 d-flex align-items-start justify-content-between gap-3">
-                          <p className="mb-0 text-secondary">{item.label}</p>
-                          <button
-                            type="button"
-                            className="tooltip-trigger"
-                            data-bs-toggle="tooltip"
-                            data-bs-placement="top"
-                            title={item.example}
-                            aria-label={`Ejemplo de ${item.label}`}
-                          >
-                            ?
-                          </button>
+                  {includes.map((item, index) => {
+                    const colors = ['#09b08b', '#0d6efd', '#f59e0b', '#8b5cf6', '#6366f1', '#ec4899'];
+                    const cardBorderColor = colors[index % colors.length];
+                    return (
+                      <div className="col-md-6" key={item.label}>
+                        <div className="card border-0 shadow-sm minimal-card h-100" style={{ borderLeft: `4px solid ${cardBorderColor}` }}>
+                          <div className="card-body p-4 d-flex align-items-start justify-content-between gap-3">
+                            <p className="mb-0 text-secondary fw-medium">{item.label}</p>
+                            <button
+                              type="button"
+                              className="tooltip-trigger"
+                              onClick={() => handleSelectExample(item.category, item.subTab || null, item.device || null)}
+                              aria-label={`Ejemplo de ${item.label}`}
+                            >
+                              Demo
+                            </button>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -757,9 +783,9 @@ function App() {
                     <span className="browser-dot green"></span>
                   </div>
                   <div className="browser-address">
-                    {activeExample === 'landing' && 'https://landing-express.listoenlinea.com'}
-                    {activeExample === 'professional' && 'https://sitio-profesional.listoenlinea.com'}
-                    {activeExample === 'automation' && 'https://automatizacion-leads.listoenlinea.com'}
+                    {activeExample === 'landing' && 'https://landing-express.portalenlinea.com'}
+                    {activeExample === 'professional' && 'https://sitio-profesional.portalenlinea.com'}
+                    {activeExample === 'automation' && 'https://automatizacion-leads.portalenlinea.com'}
                   </div>
                 </div>
 
