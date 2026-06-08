@@ -1120,3 +1120,37 @@
     max-width: none;
   }
 }
+
+/* ── Animaciones de Rompecabezas (Puzzle Scroll Assembly) ── */
+.puzzle-piece {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Estado Desensamblado */
+.puzzle-piece.puzzle-left {
+  transform: translateX(-100px) rotate(-8deg) scale(0.92);
+}
+
+.puzzle-piece.puzzle-right {
+  transform: translateX(100px) rotate(8deg) scale(0.92);
+}
+
+.puzzle-piece.puzzle-bottom {
+  transform: translateY(80px) rotate(2deg) scale(0.94);
+}
+
+.puzzle-piece.puzzle-top {
+  transform: translateY(-80px) rotate(-2deg) scale(0.94);
+}
+
+.puzzle-piece.puzzle-scale {
+  transform: scale(0.82) translateY(50px);
+}
+
+/* Estado Ensamblado (Activo al entrar en pantalla) */
+.puzzle-piece.assembled {
+  opacity: 1 !important;
+  transform: translate(0) rotate(0) scale(1) !important;
+}

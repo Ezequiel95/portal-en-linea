@@ -9,7 +9,7 @@ import './App.css'
 const Logo = ({ light = true, size = 38 }) => {
   const textColor = light ? 'text-white' : 'text-dark'
   const subColor = light ? '#00e676' : '#09b08b' // Más claro y brillante en fondos oscuros para mejorar contraste
-  
+
   return (
     <div className="logo-container d-flex align-items-center gap-2">
       <svg width={size} height={size} viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -19,34 +19,34 @@ const Logo = ({ light = true, size = 38 }) => {
             <stop offset="100%" stopColor="#00e676" />
           </linearGradient>
         </defs>
-        
+
         {/* Arco semicircular brillante verde-azul en el contorno superior derecho */}
-        <path 
-          d="M 17 14 A 14.5 14.5 0 1 1 34.5 35.5" 
-          stroke="url(#portalGreenGrad)" 
-          strokeWidth="3.6" 
-          strokeLinecap="round" 
-          fill="none" 
+        <path
+          d="M 17 14 A 14.5 14.5 0 1 1 34.5 35.5"
+          stroke="url(#portalGreenGrad)"
+          strokeWidth="3.6"
+          strokeLinecap="round"
+          fill="none"
         />
-        
+
         {/* Contorno del Teléfono (Smartphone) */}
-        <path 
-          d="M 23 37 V 15 C 23 13.5 24.2 12.5 25.5 12.5 H 32.5 C 33.8 12.5 35 13.5 35 15 V 37" 
-          stroke={light ? "#ffffff" : "#111d2e"} 
-          strokeWidth="2.8" 
-          strokeLinecap="round" 
-          fill="none" 
+        <path
+          d="M 23 37 V 15 C 23 13.5 24.2 12.5 25.5 12.5 H 32.5 C 33.8 12.5 35 13.5 35 15 V 37"
+          stroke={light ? "#ffffff" : "#111d2e"}
+          strokeWidth="2.8"
+          strokeLinecap="round"
+          fill="none"
         />
-        
+
         {/* Puerta Abierta en perspectiva */}
-        <path 
-          d="M 25 15.2 L 32 12.8 V 34.8 L 25 33 Z" 
-          fill={light ? "#ffffff" : "#111d2e"} 
+        <path
+          d="M 25 15.2 L 32 12.8 V 34.8 L 25 33 Z"
+          fill={light ? "#ffffff" : "#111d2e"}
         />
-        
+
         {/* Picaporte de la puerta (círculo) */}
         <circle cx="30" cy="23.8" r="1" fill={light ? "#111d2e" : "#ffffff"} />
-        
+
         {/* Píxeles digitales flotantes / cuadrados a la izquierda */}
         <rect x="12" y="24" width="1.8" height="1.8" fill="#09b08b" rx="0.3" />
         <rect x="15" y="19" width="2" height="2" fill="#00e676" rx="0.3" />
@@ -57,7 +57,7 @@ const Logo = ({ light = true, size = 38 }) => {
         <rect x="18" y="31" width="2" height="2" fill="#09b08b" rx="0.3" />
         <rect x="8" y="21" width="1.6" height="1.6" fill="#00e676" rx="0.3" opacity="0.6" />
       </svg>
-      
+
       <div className="logo-text d-flex flex-column text-start">
         <span className={`logo-title fw-bold ${textColor} leading-none m-0`} style={{ fontSize: '1.25rem', letterSpacing: '0.12em', fontFamily: "'Outfit', 'Inter', sans-serif" }}>
           PORT<span style={{ fontFamily: "sans-serif" }}>Λ</span>L
@@ -217,7 +217,7 @@ const pricing = [
     name: 'Sitio Profesional',
     price: '$14,900 MXN',
     description: 'Para negocios que necesitan una presencia digital completa.',
-    features: ['Hasta 8 secciones', 'Diseño a medida', 'Blog o catalogo opcional'],
+    features: ['Hasta 6 secciones', 'Diseño a medida', 'Blog o catalogo opcional'],
     featured: true,
     example: 'Ejemplo: sitio para despacho o PyME con inicio, nosotros, servicios, blog y contacto.',
   },
@@ -299,7 +299,7 @@ function App() {
     if (!autoForm.name || !autoForm.phone) return
     setAutoRunning(true)
     setAutoStep(1)
-    
+
     // Step 1: Form Submitted
     setTimeout(() => {
       setAutoStep(2)
@@ -310,7 +310,7 @@ function App() {
           text: `🔔 *NUEVA CONVERSIÓN EN WEB*\n\n👤 *Nombre:* ${autoForm.name}\n📞 *Teléfono:* ${autoForm.phone}\n📦 *Interés:* Web + Automatización\n\n⚡ _Enviado automáticamente por el Bot._`
         }
       ])
-      
+
       // Step 2: WhatsApp Notification
       setTimeout(() => {
         setAutoStep(3)
@@ -347,6 +347,31 @@ function App() {
       tooltipInstances.forEach((tooltip) => tooltip.dispose())
     }
   }, [])
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('assembled');
+          } else {
+            entry.target.classList.remove('assembled');
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      }
+    );
+
+    const elements = document.querySelectorAll('.puzzle-piece');
+    elements.forEach((el) => observer.observe(el));
+
+    return () => {
+      elements.forEach((el) => observer.unobserve(el));
+    };
+  }, [activeExample, proTab, autoStep, deviceType, landingSubmitted]);
 
   return (
     <div className="bg-app">
@@ -477,16 +502,19 @@ function App() {
         <section className="py-4 py-lg-5">
           <div className="container">
             <div className="row g-3">
-              {metrics.map((item) => (
-                <div className="col-md-4" key={item.label}>
-                  <div className="card h-100 border-0 shadow-sm metric-card-minimal" style={{ borderTop: `4px solid ${item.color}` }}>
-                    <div className="card-body p-4">
-                      <div className="display-6 fw-semibold mb-2" style={{ color: item.color }}>{item.value}</div>
-                      <p className="text-secondary mb-0 fw-semibold">{item.label}</p>
+              {metrics.map((item, index) => {
+                const puzzleDirs = ['puzzle-left', 'puzzle-bottom', 'puzzle-right'];
+                return (
+                  <div className={`col-md-4 puzzle-piece ${puzzleDirs[index % 3]}`} key={item.label}>
+                    <div className="card h-100 border-0 shadow-sm metric-card-minimal" style={{ borderTop: `4px solid ${item.color}` }}>
+                      <div className="card-body p-4">
+                        <div className="display-6 fw-semibold mb-2" style={{ color: item.color }}>{item.value}</div>
+                        <p className="text-secondary mb-0 fw-semibold">{item.label}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>
@@ -509,48 +537,51 @@ function App() {
 
             {/* Cards de diferenciadores */}
             <div className="row g-3 mb-4">
-              {differentiators.map((item) => (
-                <div className="col-md-6 col-xl-3" key={item.title}>
-                  <div
-                    className="diff-card h-100"
-                    style={{ '--accent': item.color, '--accent-bg': item.bg }}
-                  >
-                    <div className="diff-card-icon-wrap">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.6}
-                        stroke={item.color}
-                        width="22"
-                        height="22"
-                        aria-hidden="true"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" d={item.icon} />
-                      </svg>
-                    </div>
-                    <h3 className="diff-card-title">{item.title}</h3>
-                    <p className="diff-card-desc">{item.description}</p>
-                    <button
-                      type="button"
-                      className="diff-card-tip animate-pulse"
-                      onClick={() => handleSelectExample(item.category, item.subTab || null, item.device || null)}
-                      aria-label={`Ejemplo de ${item.title}`}
+              {differentiators.map((item, index) => {
+                const puzzleDirs = ['puzzle-left', 'puzzle-bottom', 'puzzle-top', 'puzzle-right'];
+                return (
+                  <div className={`col-md-6 col-xl-3 puzzle-piece ${puzzleDirs[index % 4]}`} key={item.title}>
+                    <div
+                      className="diff-card h-100"
+                      style={{ '--accent': item.color, '--accent-bg': item.bg }}
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" width="11" height="11">
-                        <path fillRule="evenodd" d="M15 8A7 7 0 1 1 1 8a7 7 0 0 1 14 0ZM9 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM6.75 8a.75.75 0 0 0 0 1.5h.75v1.75a.75.75 0 0 0 1.5 0v-2.5A.75.75 0 0 0 8.25 8h-1.5Z" clipRule="evenodd" />
-                      </svg>
-                      Probar en vivo
-                    </button>
+                      <div className="diff-card-icon-wrap">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.6}
+                          stroke={item.color}
+                          width="22"
+                          height="22"
+                          aria-hidden="true"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" d={item.icon} />
+                        </svg>
+                      </div>
+                      <h3 className="diff-card-title">{item.title}</h3>
+                      <p className="diff-card-desc">{item.description}</p>
+                      <button
+                        type="button"
+                        className="diff-card-tip animate-pulse"
+                        onClick={() => handleSelectExample(item.category, item.subTab || null, item.device || null)}
+                        aria-label={`Ejemplo de ${item.title}`}
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" width="11" height="11">
+                          <path fillRule="evenodd" d="M15 8A7 7 0 1 1 1 8a7 7 0 0 1 14 0ZM9 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM6.75 8a.75.75 0 0 0 0 1.5h.75v1.75a.75.75 0 0 0 1.5 0v-2.5A.75.75 0 0 0 8.25 8h-1.5Z" clipRule="evenodd" />
+                        </svg>
+                        Probar en vivo
+                      </button>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {/* Cards de servicios */}
             <div className="row g-3">
               {services.map((service, index) => (
-                <div className="col-md-6" key={service.label}>
+                <div className={`col-md-6 puzzle-piece ${index % 2 === 0 ? 'puzzle-left' : 'puzzle-right'}`} key={service.label}>
                   <div className="svc-card">
                     <div className="svc-card-icon-col">
                       <svg
@@ -591,7 +622,7 @@ function App() {
         <section className="py-5 bg-white border-top" id="incluye">
           <div className="container">
             <div className="row g-4 align-items-start">
-              <div className="col-lg-5">
+              <div className="col-lg-5 puzzle-piece puzzle-left">
                 <span className="text-uppercase small fw-semibold tracking-label text-primary">Que incluye</span>
                 <h2 className="display-6 text-dark mt-2 mb-3">Todo lo necesario para lanzar una web limpia y util.</h2>
                 <p className="text-secondary mb-0">
@@ -604,7 +635,7 @@ function App() {
                     const colors = ['#09b08b', '#0d6efd', '#f59e0b', '#8b5cf6', '#6366f1', '#ec4899'];
                     const cardBorderColor = colors[index % colors.length];
                     return (
-                      <div className="col-md-6" key={item.label}>
+                      <div className={`col-md-6 puzzle-piece ${index % 2 === 0 ? 'puzzle-bottom' : 'puzzle-right'}`} key={item.label}>
                         <div className="card border-0 shadow-sm minimal-card h-100" style={{ borderLeft: `4px solid ${cardBorderColor}` }}>
                           <div className="card-body p-4 d-flex align-items-start justify-content-between gap-3">
                             <p className="mb-0 text-secondary fw-medium">{item.label}</p>
@@ -636,43 +667,46 @@ function App() {
               </div>
             </div>
             <div className="row g-4">
-              {pricing.map((plan) => (
-                <div className="col-lg-4" key={plan.name}>
-                  <div className={plan.featured ? 'card border-primary shadow-sm h-100 pricing-card-bs featured-bs' : 'card border-0 shadow-sm h-100 pricing-card-bs'}>
-                    <div className="card-body p-4 p-lg-5">
-                      <div className="d-flex align-items-start justify-content-between gap-3 mb-2">
-                        <p className="small text-uppercase fw-semibold text-primary mb-0">{plan.name}</p>
-                        <button
-                          type="button"
-                          className="tooltip-trigger"
-                          onClick={() => handleSelectExample(
-                            plan.name.toLowerCase().includes('landing') ? 'landing' :
-                            plan.name.toLowerCase().includes('profesional') ? 'professional' : 'automation'
-                          )}
-                          aria-label={`Ejemplo de ${plan.name}`}
-                        >
-                          Ejemplo
-                        </button>
+              {pricing.map((plan, index) => {
+                const puzzleDirs = ['puzzle-left', 'puzzle-scale', 'puzzle-right'];
+                return (
+                  <div className={`col-lg-4 puzzle-piece ${puzzleDirs[index % 3]}`} key={plan.name}>
+                    <div className={plan.featured ? 'card border-primary shadow-sm h-100 pricing-card-bs featured-bs' : 'card border-0 shadow-sm h-100 pricing-card-bs'}>
+                      <div className="card-body p-4 p-lg-5">
+                        <div className="d-flex align-items-start justify-content-between gap-3 mb-2">
+                          <p className="small text-uppercase fw-semibold text-primary mb-0">{plan.name}</p>
+                          <button
+                            type="button"
+                            className="tooltip-trigger"
+                            onClick={() => handleSelectExample(
+                              plan.name.toLowerCase().includes('landing') ? 'landing' :
+                                plan.name.toLowerCase().includes('profesional') ? 'professional' : 'automation'
+                            )}
+                            aria-label={`Ejemplo de ${plan.name}`}
+                          >
+                            Ejemplo
+                          </button>
+                        </div>
+                        <div className="h2 text-dark mb-3">{plan.price}</div>
+                        <p className="text-secondary mb-4">{plan.description}</p>
+                        <ul className="list-unstyled d-grid gap-2 text-secondary mb-4">
+                          {plan.features.map((feature) => (
+                            <li key={feature}>{feature}</li>
+                          ))}
+                        </ul>
+                        <a className={plan.featured ? 'btn btn-primary w-100' : 'btn btn-outline-secondary w-100'} href="#contacto">
+                          Cotizar plan
+                        </a>
                       </div>
-                      <div className="h2 text-dark mb-3">{plan.price}</div>
-                      <p className="text-secondary mb-4">{plan.description}</p>
-                      <ul className="list-unstyled d-grid gap-2 text-secondary mb-4">
-                        {plan.features.map((feature) => (
-                          <li key={feature}>{feature}</li>
-                        ))}
-                      </ul>
-                      <a className={plan.featured ? 'btn btn-primary w-100' : 'btn btn-outline-secondary w-100'} href="#contacto">
-                        Cotizar plan
-                      </a>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {/* Leyendas explicativas del servicio */}
             <div className="row g-4 mt-5 pt-4 border-top">
-              <div className="col-md-6 col-lg-3">
+              <div className="col-md-6 col-lg-3 puzzle-piece puzzle-bottom">
                 <div className="d-flex gap-3 align-items-start">
                   <div className="text-primary display-6 mb-0 mt-n1" style={{ fontSize: '1.8rem' }}>⚡</div>
                   <div>
@@ -683,7 +717,7 @@ function App() {
                   </div>
                 </div>
               </div>
-              <div className="col-md-6 col-lg-3">
+              <div className="col-md-6 col-lg-3 puzzle-piece puzzle-bottom">
                 <div className="d-flex gap-3 align-items-start">
                   <div className="text-primary display-6 mb-0 mt-n1" style={{ fontSize: '1.8rem' }}>🌐</div>
                   <div>
@@ -694,7 +728,7 @@ function App() {
                   </div>
                 </div>
               </div>
-              <div className="col-md-6 col-lg-3">
+              <div className="col-md-6 col-lg-3 puzzle-piece puzzle-bottom">
                 <div className="d-flex gap-3 align-items-start">
                   <div className="text-primary display-6 mb-0 mt-n1" style={{ fontSize: '1.8rem' }}>🛡️</div>
                   <div>
@@ -705,7 +739,7 @@ function App() {
                   </div>
                 </div>
               </div>
-              <div className="col-md-6 col-lg-3">
+              <div className="col-md-6 col-lg-3 puzzle-piece puzzle-bottom">
                 <div className="d-flex gap-3 align-items-start">
                   <div className="text-primary display-6 mb-0 mt-n1" style={{ fontSize: '1.8rem' }}>🛠️</div>
                   <div>
@@ -724,13 +758,13 @@ function App() {
         {/* Visualizador de Ejemplos en Vivo */}
         <section className="py-5 bg-light border-top" id="ejemplos-en-vivo">
           <div className="container">
-            <div className="text-center mb-5">
+            <div className="text-center mb-5 puzzle-piece puzzle-top">
               <span className="text-uppercase small fw-semibold tracking-label text-primary">Demostración interactiva</span>
               <h2 className="display-6 text-dark mt-2 mb-3">Prueba en Vivo nuestros Paquetes</h2>
               <p className="text-secondary mx-auto" style={{ maxWidth: '600px', fontSize: '0.95rem' }}>
                 Interactúa con las simulaciones interactivas de abajo para ver en tiempo real cómo funcionará el sitio o automatización de tu negocio.
               </p>
-              
+
               {/* Toggles del simulador */}
               <div className="d-inline-flex flex-wrap justify-content-center gap-2 p-2 bg-white rounded-4 shadow-sm mt-4 border">
                 <button
@@ -773,7 +807,7 @@ function App() {
             </div>
 
             {/* Contenedor de Dispositivo */}
-            <div className={`sim-device-container ${deviceType === 'desktop' ? 'desktop' : 'mobile'}`}>
+            <div className={`sim-device-container ${deviceType === 'desktop' ? 'desktop' : 'mobile'} puzzle-piece puzzle-scale`}>
               <div className="browser-mockup">
                 {/* Cabecera del navegador */}
                 <div className="browser-header">
@@ -791,7 +825,7 @@ function App() {
 
                 {/* Cuerpo del navegador */}
                 <div className="browser-body">
-                  
+
                   {/* CASO 1: LANDING EXPRESS */}
                   {activeExample === 'landing' && (
                     <div className="mock-landing">
@@ -955,7 +989,7 @@ function App() {
                   {activeExample === 'automation' && (
                     <div className="mock-auto bg-white" style={{ minHeight: '480px' }}>
                       <div className="automation-split">
-                        
+
                         {/* Formulario en Web */}
                         <div className="auto-left">
                           <h4 className="h6 fw-bold text-dark mb-1">1. Cliente llena Formulario</h4>
@@ -1002,7 +1036,7 @@ function App() {
                         <div className="auto-right">
                           <div>
                             <h4 className="h6 fw-bold text-white mb-3">2. Pipeline de Conexión</h4>
-                            
+
                             <div className={`pipeline-step ${autoStep === 1 ? 'active' : ''} ${autoStep > 1 ? 'completed' : ''}`}>
                               <span className="pipeline-badge">1</span>
                               <span style={{ fontSize: '0.7rem', fontWeight: 500 }}>Formulario enviado en web</span>
@@ -1093,14 +1127,14 @@ function App() {
         <section className="py-5 bg-white border-top">
           <div className="container">
             <div className="row g-4">
-              <div className="col-lg-5">
+              <div className="col-lg-5 puzzle-piece puzzle-left">
                 <span className="text-uppercase small fw-semibold tracking-label text-primary">Preguntas frecuentes</span>
                 <h2 className="display-6 text-dark mt-2">Respuestas simples antes de empezar.</h2>
               </div>
               <div className="col-lg-7">
                 <div className="vstack gap-3">
-                  {faqs.map((item) => (
-                    <details className="faq-bs rounded-4 border bg-white p-4" key={item.question}>
+                  {faqs.map((item, index) => (
+                    <details className="faq-bs rounded-4 border bg-white p-4 puzzle-piece puzzle-right" key={item.question}>
                       <summary className="fw-semibold text-dark">{item.question}</summary>
                       <p className="text-secondary mt-3 mb-0">{item.answer}</p>
                     </details>
@@ -1113,7 +1147,7 @@ function App() {
 
         <section className="py-5 border-top" id="contacto">
           <div className="container">
-            <div className="card border-0 shadow-sm contact-card-bs">
+            <div className="card border-0 shadow-sm contact-card-bs puzzle-piece puzzle-scale">
               <div className="card-body p-4 p-lg-5">
                 <div className="row g-4 align-items-center">
                   <div className="col-lg-7">
@@ -1155,28 +1189,28 @@ function App() {
               <div className="d-flex justify-content-center justify-content-md-end gap-3 mb-3">
                 <a href="https://facebook.com" className="footer-social-icon" aria-label="Facebook">
                   <svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
                   </svg>
                 </a>
                 <a href="https://instagram.com" className="footer-social-icon" aria-label="Instagram">
                   <svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.742.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.742C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.743-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.6.282-.109.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+                    <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.742.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.742C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.743-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.6.282-.109.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
                   </svg>
                 </a>
                 <a href="https://tiktok.com" className="footer-social-icon" aria-label="TikTok">
                   <svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M9 0h1.98c.144.32.34.61.58.85.5.5 1.15.79 1.87.8v1.98c-.7 0-1.37-.19-1.95-.53V10.5C11.48 13 9.4 15 6.9 15c-2.5 0-4.5-2-4.5-4.5s2-4.5 4.5-4.5c.34 0 .67.04.99.11V8.15c-.32-.1-.66-.15-.99-.15-1.38 0-2.5 1.12-2.5 2.5s1.12 2.5 2.5 2.5 2.5-1.12 2.5-2.5V0z"/>
+                    <path d="M9 0h1.98c.144.32.34.61.58.85.5.5 1.15.79 1.87.8v1.98c-.7 0-1.37-.19-1.95-.53V10.5C11.48 13 9.4 15 6.9 15c-2.5 0-4.5-2-4.5-4.5s2-4.5 4.5-4.5c.34 0 .67.04.99.11V8.15c-.32-.1-.66-.15-.99-.15-1.38 0-2.5 1.12-2.5 2.5s1.12 2.5 2.5 2.5 2.5-1.12 2.5-2.5V0z" />
                   </svg>
                 </a>
                 <a href="https://wa.me/523331835228" className="footer-social-icon" aria-label="WhatsApp">
                   <svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.618-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+                    <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.618-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
                   </svg>
                 </a>
               </div>
             </div>
           </div>
-          
+
           <div className="footer-bottom text-center small text-white-50">
             <p className="mb-1">
               &copy; {new Date().getFullYear()} <strong>Copyright Portal en Línea</strong>. Todos los derechos reservados.
